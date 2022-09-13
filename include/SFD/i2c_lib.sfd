@@ -1,0 +1,24 @@
+==id $Id: i2c_lib.sfd,v 1.0 2002/09/21 13:16:33 stoecker Exp $
+==base _I2CBase
+==basetype struct I2CBase *
+==libname i2c.library
+==bias 30
+==public
+==include <libraries/i2c.h>
+==include <utility/hooks.h>
+BYTE AllocI2C(UBYTE delaytype, STRPTR Name) (d0, a1)
+void FreeI2C() ()
+ULONG SetI2CDelay(ULONG ticks) (d0)
+void InitI2C() ()
+ULONG SendI2C(UBYTE addr, UWORD number, UBYTE *i2cdata) (d0,d1,a1)
+ULONG ReceiveI2C(UBYTE addr, UWORD number, UBYTE *i2cdata) (d0,d1,a1)
+STRPTR GetI2COpponent() ()
+STRPTR I2CErrText(ULONG errnum) (d0)
+void ShutDownI2C() ()
+BYTE BringBackI2C() ()
+LONG ex_TestRequest(STRPTR title, STRPTR body, STRPTR gadgets) (a0,a1,a2)
+LONG ex_TestRequest2A(STRPTR title, STRPTR body, STRPTR gadgets, APTR args) (a0,a1,a2,a3)
+==varargs
+LONG ex_TestRequest2(STRPTR title, STRPTR body, STRPTR gadgets, ...) (a0,a1,a2,a3)
+ULONG ex_TestRequest3(struct Hook *hook) (a0)
+==end
