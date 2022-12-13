@@ -16,9 +16,4 @@ STRPTR GetI2COpponent() ()
 STRPTR I2CErrText(ULONG errnum) (d0)
 void ShutDownI2C() ()
 BYTE BringBackI2C() ()
-LONG ex_TestRequest(STRPTR title, STRPTR body, STRPTR gadgets) (a0,a1,a2)
-LONG ex_TestRequest2A(STRPTR title, STRPTR body, STRPTR gadgets, APTR args) (a0,a1,a2,a3)
-==varargs
-LONG ex_TestRequest2(STRPTR title, STRPTR body, STRPTR gadgets, ...) (a0,a1,a2,a3)
-ULONG ex_TestRequest3(struct Hook *hook) (a0)
 ==end

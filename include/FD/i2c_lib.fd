@@ -11,7 +11,4 @@ GetI2COpponent()()
 I2CErrText(errnum)(d0)
 ShutDownI2C()()
 BringBackI2C()()
-ex_TestRequest(title,body,gadgets)(a0/a1/a2)
-ex_TestRequest2A(title,body,gadgets,args)(a0/a1/a2/a3)
-ex_TestRequest3(hook)(a0)
 ##end

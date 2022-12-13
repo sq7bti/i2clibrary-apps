@@ -7,7 +7,7 @@
 **
 **	C prototypes. For use with 32 bit integers only.
 **
-**	Copyright © 2020 Dirk Stoecker
+**	Copyright ï¿½ 2020 Dirk Stoecker
 **	All Rights Reserved
 */
 
@@ -28,9 +28,5 @@ STRPTR GetI2COpponent(void);
 STRPTR I2CErrText(ULONG errnum);
 void ShutDownI2C(void);
 BYTE BringBackI2C(void);
-LONG ex_TestRequest(STRPTR title, STRPTR body, STRPTR gadgets);
-LONG ex_TestRequest2A(STRPTR title, STRPTR body, STRPTR gadgets, APTR args);
-LONG ex_TestRequest2(STRPTR title, STRPTR body, STRPTR gadgets, ...);
-ULONG ex_TestRequest3(struct Hook * hook);
 
 #endif	/*  CLIB_I2C_PROTOS_H  */

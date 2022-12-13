@@ -10,5 +10,5 @@ A collection of tools to perform basic operations on I2C bus.
 - lm75 - read LM75 temperature sensor chip
 - lm75th - set threshold for alarm in LM75 sensor chip
 
-i2cset - usage: A=Address/A,V=Value/A/M
-i2cget - usage: A=Address/A,L=Length/N,D=Decimal/S
+Prerequisites:
+- https://github.com/AmigaPorts/m68k-amigaos-gcc

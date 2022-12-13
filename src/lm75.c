@@ -59,7 +59,7 @@ int main(int argc, char **argv)
 			      temperat = buf[1];
   					temperat *= 100;
   					temperat >>= 8;
-  					printf("%s0x%02x: %c%d.%02dC", n==0?"":", ", i2c_sensor_addr, s, buf[0], temperat);
+  					printf("%s0x%02x: %c%d.%02d%cC", n==0?"":", ", i2c_sensor_addr, s, buf[0], temperat, 0xB0);
   				}
   			}
   			FreeArgs(myrda);

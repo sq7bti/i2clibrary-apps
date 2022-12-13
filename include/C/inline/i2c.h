@@ -60,21 +60,4 @@
 	LP0(0x54, BYTE, BringBackI2C, \
 	, I2C_BASE_NAME)
 
-#define ex_TestRequest(title, body, gadgets) \
-	LP3(0x5a, LONG, ex_TestRequest, STRPTR, title, a0, STRPTR, body, a1, STRPTR, gadgets, a2, \
-	, I2C_BASE_NAME)
-
-#define ex_TestRequest2A(title, body, gadgets, args) \
-	LP4(0x60, LONG, ex_TestRequest2A, STRPTR, title, a0, STRPTR, body, a1, STRPTR, gadgets, a2, APTR, args, a3, \
-	, I2C_BASE_NAME)
-
-#ifndef NO_INLINE_STDARG
-#define ex_TestRequest2(title, body, gadgets, tags...) \
-	({ULONG _tags[] = {tags}; ex_TestRequest2A((title), (body), (gadgets), (APTR) _tags);})
-#endif
-
-#define ex_TestRequest3(hook) \
-	LP1(0x66, ULONG, ex_TestRequest3, struct Hook *, hook, a0, \
-	, I2C_BASE_NAME)
-
 #endif /*  _INLINE_I2C_H  */
