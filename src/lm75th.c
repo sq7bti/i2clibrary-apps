@@ -57,28 +57,33 @@ UBYTE atoh(char c) {
 ULONG stof(STRPTR s) {
 	ULONG prec = 10;
 	ULONG r = 0;
+	UBYTE neg = 0;
 	while(*s) {
 		if((*s == '.') || (*s == ',')) {
 			++s;
 			break;
 		} else {
-			r *= 10;
-			r += atoh(*s) << 8;
-			printf("next digit: %c -> 0x%04lx\n", *s, r);
+			if((*s) == '-') {
+				neg = 1;
+			} else {
+				r *= 10;
+				r += atoh(*s) << 8;
+//				printf("next digit: %c -> 0x%04lx\n", *s, r);
+			}
 		}
 		++s;
 	}
 	printf("decimal point: 0x%04lx\n", r);
 	while(*s && prec) {
 		r += (atoh(*s) << 8) / prec;
-		printf("next digit: %c", *s);
-		printf(" -> 0x%04x", atoh(*s) << 8);
-		printf(" -> 0x%04lx", (atoh(*s) << 8) / prec);
-		printf(" -> 0x%04lx\n", r);
+//		printf("next digit: %c", *s);
+//		printf(" -> 0x%04x", atoh(*s) << 8);
+//		printf(" -> 0x%04lx", (atoh(*s) << 8) / prec);
+//		printf(" -> 0x%04lx\n", r);
 		prec *= 10;
 		++s;
 	}
-	return r;
+	return neg?(~r + (1<<8)):r;
 }
 
 ULONG stoi(STRPTR s) {
@@ -106,9 +111,9 @@ int main(int argc, char **argv)
   		if (ReadArgs(TEMPLATE, result, myrda) && (strlen((char *)result[0]) > 0)) {
   			if(result[OPT_ADDR]) {
   				s = strlen((STRPTR)result[OPT_ADDR]);
-  				if((s == 2) || (strncmp((STRPTR)result[OPT_ADDR], "0x", 2) == 0) && (s == 4)) {
-						if(stoi((STRPTR)result[OPT_ADDR]))
-  						chip_addr += stoi((STRPTR)result[OPT_ADDR]);
+  				if((s == 1) || (s == 2) || (strncmp((STRPTR)result[OPT_ADDR], "0x", 2) == 0) && (s == 4)) {
+						if((s == 1) && stoi((STRPTR)result[OPT_ADDR]))
+  							chip_addr += stoi((STRPTR)result[OPT_ADDR]);
 						else
 							chip_addr = stoi((STRPTR)result[OPT_ADDR]);
   					printf("Chip address Specified : >%s<, len=%d -> 0x%02X\n", (STRPTR)result[OPT_ADDR], strlen((STRPTR)result[OPT_ADDR]), chip_addr);
@@ -119,7 +124,7 @@ int main(int argc, char **argv)
   					/*thyst = atof((STRPTR)result[OPT_THYST]);*/
   					thyst_fp = stof((STRPTR)result[OPT_THYST]);
   					/*printf("Register address Specified : >%s<, len=%u -> %f -> 0x%04lx\n", (STRPTR)result[OPT_THYST], s, thyst, thyst_fp);*/
-  					printf("Register address Specified : >%s<, len=%u -> 0x%04lx\n", (STRPTR)result[OPT_THYST], s, thyst_fp);
+  					printf("Threshold temperature specified : >%s<, len=%u -> 0x%04lx\n", (STRPTR)result[OPT_THYST], s, thyst_fp);
   				}
 
         	//for (argNo=size-1; argNo > 0; --argNo) {
